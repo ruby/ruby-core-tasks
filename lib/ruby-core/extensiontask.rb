@@ -46,7 +46,7 @@ module RubyCore
       desc("Makefile in #{build_dir}")
       file makefile => "#{extension_dir}/depend" if File.exist?("#{extension_dir}/depend")
       file(makefile => extconf) {
-        ruby("-C", build_dir, Pathname(extconf).relative_path_from(build_dir).to_s)
+        ruby("-C", build_dir, Pathname(extconf).relative_path_from(Pathname(build_dir)).to_s)
       } | build_dir
 
       so = "#{build_dir}/#{extension_name}.#{RbConfig::CONFIG['DLEXT']}"
