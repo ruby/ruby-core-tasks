@@ -49,7 +49,7 @@ Gem::Specification.new do |spec|
     :^/bin/ :^/test/ :^/rakelib/ :^/.git* :^/Gemfile* :^/Rakefile*
   ]
   spec.files = IO.popen(%w[git ls-files -z --] + pathspecs, chdir: __dir__,
-                        err: IO::NULL, exception: false) {|f| f.readlines("\x0", chomp: true)}
+                        err: IO::NULL) {|f| f.readlines("\x0", chomp: true)}
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
