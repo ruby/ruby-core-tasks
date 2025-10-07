@@ -51,7 +51,7 @@ module RubyCore
 
       so = "#{build_dir}/#{extension_name}.#{RbConfig::CONFIG['DLEXT']}"
       desc("Extension library: #{so}")
-      file(so => [:".force", makefile]) {MAKE[chdir: build_dir]}
+      file(so => [makefile]) {MAKE[chdir: build_dir]}
 
       task :compile => so
 
